@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../pages/login_page.dart';
+import '../pages/profile_page.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
