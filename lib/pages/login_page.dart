@@ -40,15 +40,18 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 50),
         children: [
           //email
           TextField(
             controller: _emailController,
+            decoration: const InputDecoration(labelText: "Email"),
           ),
 
           //password
           TextField(
               controller: _passwordController,
+              decoration: const InputDecoration(labelText: "Password"),
           ),
 
 
