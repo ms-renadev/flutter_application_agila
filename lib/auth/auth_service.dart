@@ -21,7 +21,7 @@ class AuthService {
   }
   //sign out 
   Future<void> signOut() async{
-    await._supabase.signOut();
+    await _supabase.auth.signOut();
   }
 
   //get user email
