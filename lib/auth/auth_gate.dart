@@ -24,8 +24,14 @@ class AuthGate extends StatelessWidget {
             body: Center(child: CircularProgressIndicator()),
           );
         }
-
+        //check if there is a valid session cerrently
+        final session = snapshot.hasData ? snapshot.data!.session : null;
+        if(session != null){
+          return ProfilePage();
+        }else{
+          return LoginPage();
+        }
       },
-      );
+    );
   }
 }
