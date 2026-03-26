@@ -6,6 +6,7 @@ unauthenticated -> login page
 authenticated -> Profile page
  */
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
@@ -14,7 +15,17 @@ class AuthGate extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder(
       //listen to auth state changes
-      stream: stream, builder: builder,
+      stream: Supabase.instance.client.auth.onAuthStateChange, 
+      //build appropriate page based on auth state
+      builder: (context, snapshot){
+        //loading...
+        if(snapshot.connectionState == ConnectionState.waiting){
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
+
+      },
       );
   }
 }
