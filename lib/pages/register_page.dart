@@ -36,7 +36,7 @@ class _RegisterPageState extends State<RegisterPage> {
   try {
     await authService.signUpWithEmailPassword(email, password);
 
-    //pop register this page after successfully signing up
+    //pop this register page after successfully signing up
     Navigator.pop(context);
   } catch (e) {
     //catch any errors
@@ -48,6 +48,40 @@ class _RegisterPageState extends State<RegisterPage> {
  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: Text("Sign Up")),
+      body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 50),
+        children: [
+          //email
+          TextField(
+            controller: _emailController,
+            decoration: const InputDecoration(labelText: "Email"),
+          ),
+
+          //password
+          TextField(
+              controller: _passwordController,
+              decoration: const InputDecoration(labelText: "Password"),
+          ),
+
+          //confirm password
+          TextField(
+              controller: _confirmPasswordController,
+              decoration: const InputDecoration(labelText: "Confirm Password"),
+          ),
+
+          const SizedBox(height: 12),
+          //button
+          ElevatedButton(
+            onPressed: signUp, 
+            child: const Text("Sign Up")
+          ),
+          
+          const SizedBox(height: 12),
+          
+        ],
+      ),//list view
+    );
   }
 }

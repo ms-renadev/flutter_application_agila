@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_agila/auth/auth_service.dart';
 
+import 'register_page.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 

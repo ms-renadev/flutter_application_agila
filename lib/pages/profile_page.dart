@@ -8,8 +8,21 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+
+  void logout() async{
+    
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: Text("Profile: Welcome Back \nUser"),
+      actions: [
+        //logout button
+        IconButton(
+          onPressed: logout, 
+          icon: icon,)
+      ],
+      ),
+    );
   }
 }
