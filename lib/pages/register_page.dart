@@ -27,8 +27,9 @@ class _RegisterPageState extends State<RegisterPage> {
   //check if the password match
   
   if(password != confirmPassword){
+    if (!mounted) return; // Guard clause
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text("Password is incorrect!")));
+      content: Text("Password does not match!")));
     return;
   }
 
@@ -36,7 +37,11 @@ class _RegisterPageState extends State<RegisterPage> {
   try {
     await authService.signUpWithEmailPassword(email, password);
 
+    //this line is not in the yt tutorial since there is a problem  "Do not use BuildContexts across async gaps."
+    //here to fix this
+    
     //pop this register page after successfully signing up
+    if (!mounted) return; // Guard clause
     Navigator.pop(context);
   } catch (e) {
     //catch any errors
@@ -70,6 +75,7 @@ class _RegisterPageState extends State<RegisterPage> {
           TextField(
               controller: _confirmPasswordController,
               decoration: const InputDecoration(labelText: "Confirm Password"),
+              obscureText: true,
           ),
 
           const SizedBox(height: 12),
