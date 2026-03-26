@@ -38,6 +38,27 @@ class _LoginPageState extends State<LoginPage> {
   //build the UI
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: ListView(
+        children: [
+          //email
+          TextField(
+            controller: _emailController,
+          ),
+
+          //password
+          TextField(
+              controller: _passwordController,
+          ),
+
+
+          //button
+          ElevatedButton(
+            onPressed: login, 
+            child: const Text("Login")
+          )
+        ],
+      ),//list view
+    );
   }
 }
